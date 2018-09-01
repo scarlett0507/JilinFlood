@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>MapPage1</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+
+    <link rel="stylesheet" href="../../layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../css/public.css" />
+    <link rel="stylesheet" href="../../layui/css/mind.css" />
+    <link rel="stylesheet" href="../../layui/css/disaster_font.css" />
+    <style>
+       body {
+   font-family: Georgia, "游明朝", "Yu Mincho", "游明朝体", YuMincho, "ヒラギノ明朝 Pro", "Hiragino Mincho ProN", "MS P明朝", "MS PMincho", HGS明朝E, "MS Mincho", serif;
+}
+   </style>
+</head>
+
+<body class="childrenBody">
+    <blockquote class="layui-elem-quote">
+        <a class="layui-btn layui-btn-radius openJapan_btn" onClick="javascript :history.back(-1);" target="_blank">前のページに戻る</a>
+        <p style="text-align:right">推薦勉強時間：<em class="layui-word-aux">15分</em></p>
+    </blockquote>
+    <div id="title">
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend><h3>GISとは(二)</h3></legend>
+        </fieldset>
+    </div>
+    <div class="content"><p>GISを使えば、統計などのさまざまなデータを、
+    <a class="tooltip">緯度・経度<span class="tooltiptext">Latitude・Longitude</span></a>などの位置情報にもとづいて、デジタル地図上に表示させることができる。</div>
+    <div class="demo" >
+        <iframe src="Coordinateinfo.html" frameborder="0" style="width:100%; height:600px;"></iframe>
+    </div>
+    <div class="content"><p>GISでは、これらのデータのほかにも衛星写真などの画像データを重ねることができる。以前は、データ量が多すぎて手作業では地図化することが難しかった情報も、GISを活用すると非常的簡単に地図化することができる。
+    また、GISで扱うデータは電子化されているため、インターネットをはじめとするコンピュータネットワーク上でデータを共有したり、たがいに加工したりすることもできる。</p></div>
+        
+    <script type="text/javascript" src="../../layui/layui.js"></script>
+    <script type="text/javascript">
+        layui.config({
+            base: "../../js/"
+        }).extend({
+            "bodyTab": "bodyTab"
+        })
+        layui.use(['code', 'jquery', 'bodyTab'], function () {
+            var $ = layui.$,
+                tab = layui.bodyTab();
+            layui.code({
+                about: false
+            });
+            $(".goDataMenu").click(function () {
+                parent.tab.tabAdd($(this));
+            })
+        })
+    </script>
+       
+</body>
+</html>

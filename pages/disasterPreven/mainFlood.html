@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>洪水和治水</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+
+    <link rel="stylesheet" href="../../layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../../css/public.css" />
+    <link rel="stylesheet" href="../../layui/css/mind.css" />
+    <link rel="stylesheet" href="../../layui/css/disaster_font.css" />
+    <style>
+       
+   </style>
+</head>
+
+<body class="childrenBody">
+    <blockquote class="layui-elem-quote">
+        <a class="layui-btn layui-btn-radius openJapan_btn" onClick="javascript :history.back(-1);" target="_blank">返回前一页</a>
+        <p style="text-align:right">推荐学习时间：<em class="layui-word-aux">15分钟</em></p>
+    </blockquote>
+    <!-- 洪水介绍的标题 -->
+    <div id="title">
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend><h3>关于洪水</h3></legend>
+        </fieldset>
+    </div>
+    <div class="content"><p>洪水是一种自然灾害，指河流、湖泊、海洋所含的水体上涨，超过常规水位的水流现象。</div>
+    <!-- 面板的背景颜色和手风琴折叠的设置，洪水发生的原因 -->
+    <div style="padding:20px; background-color: #F2F2F2; width: 90%; margin: 0 auto;">
+      <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+          <div class="layui-card">
+            <div class="layui-card-header">发生原因</div>
+            <div class="layui-card-body">
+            <div class="layui-collapse" lay-accordion="">
+              <div class="layui-colla-item">
+                <h2 class="layui-colla-title">降雨(暴雨・台风等原因)</h2>
+              <div class="layui-colla-content">
+                <p>下雨时，雨水流入河道，使河水增加，因此，如果一地的降雨量很多，而又持续一段长时间的话，便可能出现洪灾。城市中雨水积聚又称为内涝。<button onclick="document.getElementById('id01').style.display='block'" class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon">&#xe64a;</i></button></p>
+              </div>
+              </div>
+              <div class="layui-colla-item">
+                <h2 class="layui-colla-title">天体引力引发的天文潮（多伴有台风）</h2>
+              <div class="layui-colla-content">
+                <p>在沿海地区，海上的风暴大浪也是洪水的来源之一。夏季时，活跃的台风会为这些地区带来大量雨水。有时强风更会把海水推向沿海地区，造成严重的水灾。<button onclick="document.getElementById('id02').style.display='block'" class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon">&#xe64a;</i></button></p>
+              </div>
+              </div>
+              <div class="layui-colla-item">
+                <h2 class="layui-colla-title">融雪</h2>
+              <div class="layui-colla-content">
+                <p>融雪洪水是由积雪融化形成的洪水，融雪洪水在春、夏两季常发生在中高纬地区和高山地区。若前一年冬季降雪较多，而春夏季节升温迅速，大面积积雪的融化便会形成较大洪水。在我国融雪洪水主要分布与东北和西北的高纬度地区。<button onclick="document.getElementById('id03').style.display='block'" class="layui-btn layui-btn-primary layui-btn-sm"><i class="layui-icon">&#xe64a;</i></button></p>
+              </div>
+              </div>
+              </div>        
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+    <!-- 洪水发生原因的相关图片，id01是降雨，id02是高潮，id03是融雪 -->
+    <div id="id01" class="modal">
+      <div class="modal-content">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close">&times;</span>
+          <div class="imgstar">
+            <img id="myImg" src="../../img/inner/hshui.jpg" alt="flood" style="width:90%; height:90%;">
+          </div> 
+      </div>
+    </div>
+    <div id="id02" class="modal">
+      <div class="modal-content">
+        <span onclick="document.getElementById('id02').style.display='none'" class="close">&times;</span>
+          <div class="imgstar">
+            <img id="myImg" src="../../img/inner/gao.jpg" alt="flood" style="width:90%; height:90%;">
+          </div> 
+      </div>
+    </div>
+    <div id="id03" class="modal">
+      <div class="modal-content">
+        <span onclick="document.getElementById('id03').style.display='none'" class="close">&times;</span>
+          <div class="imgstar">
+            <img id="myImg" src="../../img/inner/xue.jpg" alt="flood" style="width:90%; height:90%;">
+          </div> 
+      </div>
+    </div>
+    <!-- 洪水的例子，分别为中国和日本 -->
+    <div id="title">
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend><h3>日本和中国的例子</h3></legend>
+        </fieldset>
+    </div>
+    <!-- 中国与日本例子的入口，面板 -->
+    <div style="padding: 20px; background-color: #F2F2F2; width: 90%; margin: 0 auto; text-align: center;">
+  <div class="layui-row layui-col-space15">
+    <div class="layui-col-md6">
+      <div class="layui-card">
+        <div class="layui-card-header"><h2>日本的例子：石川县白山市・手取川</h2></div>
+        <div class="layui-card-body">
+          <p><br>手取川发源于白山，河床的坡度是日本全国首屈一指的急流河川。是日本国内一条经常发生发生洪水的河。1934年7月11日，由于大量的融雪水和暴雨，发生了前所未有的洪水和泥石流。由于下游是冲积扇平原，造成了很严重的伤亡。从支流宫谷川被冲走的大岩石（名为百万贯岩）成为了此次洪水规模的象征。<br>
+          <br></p>
+          <div><a class="layui-btn layui-btn-radius openJapan_btn" target="_blank">打开地图</a></div><br>
+          <!--  <a href="https://yamauchi-inochu.github.io/arcgis_api/index.html">-->
+          <img border="0" width="86%" src="../../img/tedori.jpg"/>
+          <v><br>能美电铁铁桥的桥底（白山市）© 国土交通省</v>
+        </div>
+      </div>
+    </div>
+    <div class="layui-col-md6">
+      <div class="layui-card">
+        <div class="layui-card-header"><h2>中国の例：吉林省吉林市・松花江</h2></div>
+        <div class="layui-card-body">
+         　<p>松花江发源于长白山主峰白头山天池，流经吉林省中心。冬季结冰，春节融雪水达到最大流量。2017年7月13日吉林省吉林市发生强降水天气，部分地区遭遇特大暴雨，导致当地河流水势普遍上涨，发生严重汛情。此次洪灾中已有18人死亡、18人失踪，强降雨致当地内涝严重，街上汽车被冲走，基础设施损坏严重。<br>
+           <br></p>
+          <div><a class="layui-btn layui-btn-radius openChina_btn" target="_blank">打开地图</a></div><br>
+          <!--  <a href="ChinaFlood.html">-->
+          <img border="0" width="85%" src="../../img/songhua.jpg" />
+          <v><br>吉林市桦木厂航空摄影 © NETEASE</v>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+    <div class="layui-footer" style="text-align:right">
+                <!-- 底部固定区域 -->
+                <font size="1.5">© Csis -  如对本网页有任何问题，请联系：</font>
+                <a href="#"><font size="2">songjiali@csis.u-tokyo.ac.jp</font></a>
+                <a href="http://www-new.csis.u-tokyo.ac.jp" rel="nofollow"><img src="../../img/logo_csis_mini.png" class="footerlogo" width="20%" /></a>
+                <font size="0.5">...</font>
+     </div>
+    <script type="text/javascript" src="../../layui/layui.js"></script>
+    <script type="text/javascript">
+        layui.config({
+            base: "../../js/"
+        }).extend({
+            "bodyTab": "bodyTab"
+        })
+        layui.use(['code', 'jquery', 'bodyTab'], function () {
+            var $ = layui.$,
+                tab = layui.bodyTab();
+            layui.code({
+                about: false
+            });
+            $(".goDataMenu").click(function () {
+                parent.tab.tabAdd($(this));
+            })
+        })
+    </script>   
+    <script type="text/javascript" src="../../js/map.js"></script>
+</body>
+</html>

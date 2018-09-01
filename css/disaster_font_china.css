@@ -1,0 +1,88 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-size:100% ;
+    line-height: 1;
+}
+img{
+    width:auto;
+    height:auto;
+    max-width:100%;
+    max-height:100%;
+}
+v {
+    width: 90%;
+    height: 25%;
+    color: #000000;
+    margin-right: 10px;
+    letter-spacing: 3px;
+    line-height: 150%;
+    margin: 0 auto;
+    font-size: 0.8em;
+}
+div.layerToggle {
+    bottom: 5%;
+    top: 55%;
+    right: 73%;
+    left:2%;
+    position: absolute;
+    z-index: 99;
+    background-color: white;
+    border-radius: 8px;
+    padding: 3%;
+    opacity: 0.75;
+}
+div#title {
+    width: 100%;
+    color: #000000;
+    text-align: center;
+    font-size: 1.2em;
+}
+.content {
+    color: #000000;
+    margin: 0 auto;
+    width: 100%;
+    float: right;
+}
+p {
+    width: 90%;
+    height: 25%;
+    color: #000000;
+    margin-right: 10px;
+    letter-spacing: 3px;
+    line-height: 150%;
+    margin: 0 auto;
+    font-size: 0.95em;
+}
+div.container {
+   height: 70%;
+   float: right;
+}
+.my_button{  
+  background-color: #009588;
+  border: none;
+  color: #FFFFFF;
+  padding: 8px 16px;
+  panding:auto;
+  text-align: center;
+  font-size: 0.8em;
+  opacity: 0.8;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  
+   border-radius: 12px;
+   position: absolute;  
+   z-index: 100;  
+   left:2%;  
+   bottom:48%;  
+
+}  
+.my_button:hover {opacity: 1}

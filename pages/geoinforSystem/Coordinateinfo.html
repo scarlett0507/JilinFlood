@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Table</title>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.7/esri/css/main.css">
+  <script>
+    var dojoConfig = {
+      has: {
+        "esri-featurelayer-webgl": 1
+      }
+    }
+  </script>
+
+  <script src="https://js.arcgis.com/4.7/"></script>
+
+  <script>
+    require([
+        "esri/Map",
+        "esri/views/MapView",
+        "esri/layers/FeatureLayer",
+        "esri/widgets/ScaleBar",
+        "esri/widgets/Compass",
+        "esri/widgets/CoordinateConversion",
+        "esri/widgets/BasemapToggle",
+        "dojo/domReady!"
+      ],
+      function(
+        Map, MapView,
+        FeatureLayer,ScaleBar,Compass,CoordinateConversion,BasemapToggle
+      ) {
+        const map = new Map({
+          basemap: "gray"
+        });
+        const view = new MapView({
+          container: "sceneDiv",
+          map: map,
+          center: [139.72,35.68],
+          zoom: 7,
+        });
+ 
+        var scaleBar=new ScaleBar({
+        	view:view,
+        	unit:"dual"
+        });
+        view.ui.add(scaleBar,{
+        	position:"bottom-left"
+        });
+        var compassWidget=new Compass({
+        	view:view
+        });
+        view.ui.add(compassWidget, "top-left");
+        var ccWidget=new CoordinateConversion({
+        	view:view
+        });
+        view.ui.add(ccWidget,"bottom-right");
+        var toggle=new BasemapToggle({
+        	view:view,
+        	nextBasemap:"hybrid"
+        });
+        view.ui.add(toggle,"top-right");
+        
+        const listNode = document.getElementById("nyc_graphics");
+        const popupTemplate = { // autocasts as new PopupTemplate()
+          title: "テーブル表",
+          content: [{
+            type: "fields",
+            fieldInfos: [{
+              fieldName: "JCODE",
+              label: "JCODE",
+              format: {
+                places: 0,
+                digitSeparator: true
+              }
+            }, {
+              fieldName: "KEN",
+              label: "県名",
+              format: {
+                places: 0,
+                digitSeparator: true
+              }
+            }, {
+              fieldName: "SIKUCHOSON",
+              label: "市区町",
+              format: {
+                places: 0,
+                digitSeparator: true
+              }
+            }, {
+              fieldName: "CITY_ENG",
+              label: "英語",
+              format: {
+                places: 0,
+                digitSeparator: true
+              }
+            }]
+          }]
+        };
+
+        const featureLayer = new FeatureLayer({
+          url: "http://csis.viphk1.ngrok.org/arcgis/rest/services/public/日本地図/MapServer/0",
+          outFields: ["*"],
+          popupTemplate: popupTemplate
+        });
+        map.add(featureLayer);
+
+        let graphics;
+
+        view.whenLayerView(featureLayer).then(function(lyrView) {
+          lyrView.watch("updating", function(val) {
+            if (!val) { // wait for the layer view to finish updating
+              lyrView.queryFeatures({
+                geometry: view.extent,
+                returnGeometry: true
+              }).then(function(results) {
+
+                graphics = results;
+
+                const fragment = document.createDocumentFragment();
+
+                results.forEach(function(result, index) {
+                  const attributes = result.attributes;
+                  const name = attributes.ZIP + " (" +
+                    attributes.PO_NAME + ")"
+                    const li = document.createElement("li");
+                  li.classList.add("panel-result");
+                  li.tabIndex = 0;
+                  li.setAttribute("data-result-id", index);
+                  li.textContent = name;
+
+                  fragment.appendChild(li);
+                });
+       
+                // Empty the current list
+                listNode.innerHTML = "";
+                listNode.appendChild(fragment);
+              }).catch(function(e) {
+                console.error("query failed: ", e);
+              });
+            }
+          });
+        });
+        listNode.addEventListener("click", onListClickHandler);
+        
+        function onListClickHandler(event) {
+          const target = event.target;
+          const resultId = target.getAttribute("data-result-id");
+          const result = resultId && graphics && graphics[parseInt(resultId,
+            10)];
+
+          if (result) {
+            view.goTo(result.geometry.extent.expand(2))
+              .then(function() {
+                view.popup.open({
+                  features: [result],
+                  location: result.geometry.centroid
+                });
+              });
+
+          }
+        }
+
+      });
+  </script>
+
+  <style>
+    html,
+    body,
+    #sceneDiv {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+    }
+
+    .panel-result {
+      cursor: pointer;
+      margin: 2px 0;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+  </style>
+</head>
+<body>
+    <div id="sceneDiv"></div>
+</body>
+
+</html>

@@ -1,0 +1,240 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="layui/css/layui.css" media="all" />
+    <title>自然环境与防灾 - Csis</title>
+    <link rel="icon" href="earth.ico" type="image/x-icon">
+    <link rel="stylesheet" href="layui/css/disaster_font.css" />
+    <link rel="stylesheet" href="layui/css/mind.css" />
+    <style>
+
+     *{
+         margin:0;
+         padding:0;
+     }
+     body{
+         background: url(img/background.jpg) 0 0 no-repeat; background-size: auto auto;
+     }
+     li{
+         list-style: none;
+     }
+     .box{
+         width:200px;
+         height:200px;
+         position: relative;
+         margin:300px auto;
+         -webkit-transform-style:preserve-3d;
+         -webkit-transform:rotateX(13deg);
+         -webkit-animation:move 10s linear infinite;
+     }
+     .minbox{
+         width:100px;
+         height:100px;
+         position: absolute;
+         left:50px;
+         top:50px;
+         -webkit-transform-style:preserve-3d;
+     }
+     .minbox li{
+         width:100px;
+         height:100px;
+         position: absolute;
+         left:0;
+         top:0;
+     }
+     .minbox li:nth-child(1){
+         background: url(img/disaster.png) no-repeat 0 0;
+         -webkit-transform:rotateX(0deg)rotateY(180deg)translateZ(50px);
+     }
+     .minbox li:nth-child(2){
+         background: url(img/gis.png) no-repeat 0 0;
+         -webkit-transform:rotateX(0deg) translateZ(50px);
+     }
+     .minbox li:nth-child(3){
+         background: url(img/earth.png) no-repeat 0 0;
+         -webkit-transform:rotateX(-90deg) translateZ(50px);
+     }
+     .minbox li:nth-child(4){
+         background: url(img/earth.png) no-repeat 0 0;
+         -webkit-transform:rotateX(90deg) translateZ(50px);
+     }
+     .minbox li:nth-child(5){
+         background: url(img/environment.png) no-repeat 0 0;
+         -webkit-transform:rotateY(-90deg) translateZ(50px);
+     }
+     .minbox li:nth-child(6){
+         background: url(img/natural.png) no-repeat 0 0;
+         -webkit-transform:rotateY(90deg) translateZ(50px);
+     }
+     .maxbox{
+         width: 200px;
+         height: 200px;
+         position: absolute;
+         left: 0;
+         top: 0;
+         -webkit-transform-style: preserve-3d;
+     }
+     .maxbox li{
+         width: 200px;
+         height: 200px;
+         background: #fff;
+         border:1px solid #ccc;
+         position: absolute;
+         left: 0;
+         top: 0;
+         opacity: 0.2;
+         -webkit-transition:all 1s ease;
+     }
+     .maxbox li:nth-child(1){
+          background: url(img/disaster200.png) no-repeat 0 0;
+         -webkit-transform:rotateX(0deg)rotateY(180deg)translateZ(100px);
+     }
+     .maxbox li:nth-child(2){
+          background: url(img/gis200.png) no-repeat 0 0;
+         -webkit-transform:rotateX(0deg) translateZ(100px);
+     }
+     .maxbox li:nth-child(3){
+          background: url(img/earth200.png) no-repeat 0 0;
+         -webkit-transform:rotateX(90deg) translateZ(100px);
+     }
+     .maxbox li:nth-child(4){
+           background: url(img/earth200.png) no-repeat 0 0;
+         -webkit-transform:rotateX(-90deg) translateZ(100px);
+     }
+     .maxbox li:nth-child(5){
+          background: url(img/environment200.png) no-repeat 0 0;
+         -webkit-transform:rotateY(-90deg) translateZ(100px);
+     }
+     .maxbox li:nth-child(6){
+          background: url(img/natural200.png) no-repeat 0 0;
+         -webkit-transform:rotateY(90deg) translateZ(100px);
+     }
+     .box:hover ol li:nth-child(1){
+         -webkit-transform:rotateX(0deg)rotateY(180deg)translateZ(300px);
+     }
+     .box:hover ol li:nth-child(2){
+         -webkit-transform:rotateX(0deg) translateZ(300px);
+     }
+     .box:hover ol li:nth-child(3){
+         -webkit-transform:rotateX(90deg) translateZ(300px);
+     }
+     .box:hover ol li:nth-child(4){
+         -webkit-transform:rotateX(-90deg) translateZ(300px);
+     }
+     .box:hover ol li:nth-child(5){
+         -webkit-transform:rotateY(-90deg) translateZ(300px);
+     }
+     .box:hover ol li:nth-child(6){
+         -webkit-transform:rotateY(90deg) translateZ(300px);
+     }
+     @keyframes move{
+         0%{
+             -webkit-transform: rotateX(13deg) rotateY(0deg);
+         }
+         100%{
+             -webkit-transform:rotateX(13deg) rotateY(360deg);
+         }
+     }
+     .footer {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #24262f;
+            color: white;
+            text-align: right;
+        }
+        p {
+    width: 90%;
+    height: 25%;
+    color: #00A295;
+    margin-right: 10px;
+    letter-spacing: 3px;
+    line-height: 150%;
+    margin: 0 auto;
+    font-size: 0.95em;
+    }
+
+    </style>
+</head>
+<body class="layui-layout-body" style="background-color:#24262f;">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header">
+            <div class="layui-logo"><h2>自然环境与防灾</h2></div>
+            <ul class="layui-nav layui-layout-right">
+                <li class="layui-nav-item">
+                    <a href="javascript:;">
+                        日文
+                    </a>
+                 </li>
+            </ul>
+        </div>
+        </div>
+        <div id="mind-index">
+         <div class="center-in-center">
+         <p>本系统是为了辅助高中地理教学而开发的防灾学习网站。网站中所介绍的电子地图，并不是纸质地图的电子版，而是由地理信息系统（GIS）技术做成的地图。当今社会，地理空间信息技术飞速发展，利用GIS来培养地图的活用能力。</p>
+         </div>
+         </div>
+        <div class="box">
+            <ul class="minbox">
+                <li>
+                    <input type="image" src="img/disaster.png" onclick="window.location = 'catalog.html';">
+                </li>
+                <li>
+                    <input type="image" src="img/gis.png" onclick="window.location = 'catalog.html';">
+                </li>
+                <li>
+                    <input type="image" src="img/earth.png" onclick="window.location = 'catalog.html';">
+                </li>
+                <li>
+                    <input type="image" src="img/earth.png" onclick="window.location = 'catalog.html';">
+                </li>
+                <li>
+                    <input type="image" src="img/environment.png" onclick="window.location = 'catalog.html';">
+                </li>
+                <li>
+                    <input type="image" src="img/natural.png" onclick="window.location = 'catalog.html';">
+                </li>
+            </ul>
+            <ol class="maxbox">
+                <li>
+                </li>
+                <li>
+                </li>
+                <li>
+                </li>
+                <li>
+                </li>
+                <li>
+                </li>
+                <li>
+                </li>
+            </ol>
+        </div>
+        <div class="footer">
+                    <a href="http://www-new.csis.u-tokyo.ac.jp" rel="nofollow"><img src="img/logo_csis_mini.png" class="footerlogo" width="25%" /></a>
+        </div>       
+        <script src="layui/layui.all.js" charset="utf-8"></script>
+
+        <div id="LAY_democodejs">
+            <script>
+layui.use('element', function(){
+  var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+  //监听导航点击
+  element.on('nav(demo)', function(elem){
+    //console.log(elem)
+    layer.msg(elem.text());
+  });
+});
+            </script>
+        </div>
+    </body>
+</html>

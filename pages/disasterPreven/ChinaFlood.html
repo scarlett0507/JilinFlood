@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>中国地图</title>
+  <script src="https://cdn.bootcss.com/jquery/1.9.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="../../css/disaster_font_china.css" />
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+    
+  </style>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.7/esri/css/main.css">
+  <script src="https://js.arcgis.com/4.7/"></script>
+  <script>
+    require([
+      "esri/Map",
+      "esri/views/MapView",
+      "esri/layers/WebTileLayer",
+      "esri/layers/FeatureLayer",
+      "esri/geometry/support/webMercatorUtils",
+      "esri/widgets/BasemapGallery",
+      "dojo/on",
+      "esri/layers/KMLLayer",
+      "esri/widgets/ScaleBar",
+      "esri/widgets/Compass",
+      "dojo/domReady!"
+
+    ], function(
+      Map,
+      MapView,
+      WebTileLayer,
+      FeatureLayer,
+      webMercatorUtils,
+      BasemapGallery,
+      on,
+      KMLLayer,
+      ScaleBar,
+      Compass
+    ) {
+     
+        const shelter = new KMLLayer({
+        url:"https://scarlett0507.github.io/JilinKML/jilinshelter.kmz",
+        id:"shelter",
+        copyright:"根据吉林市地震局网站公布信息制作而成",
+        visible: false
+      });
+
+      const flood = new KMLLayer({
+      url:"https://scarlett0507.github.io/JilinKML/waterlogging.kmz",
+      id:"flood",
+      copyright:"根据DEM数据制作而成",
+      opacity:0.6
+      });
+
+      const did = new KMLLayer({
+      url:"https://scarlett0507.github.io/JilinKML/jilinpop.kmz",
+      id:"did",
+      copyright:"根据2015年人口普查数据制作而成",
+      visible: false,
+      opacity:0.6
+      });
+
+      const map = new Map({
+        basemap: "osm",
+        layers: [flood,did,shelter]
+      });
+
+      const view = new MapView({
+        container: "viewDiv",
+        map: map,
+        center: [126.6205, 43.8955],
+        zoom: 11
+      });
+      
+      var basemapGallery = new BasemapGallery({
+    	  view:view
+    	  });
+      view.ui.add(basemapGallery,{
+    	  position:"top-right"
+      });
+
+
+      const scalebar = new ScaleBar({
+        view: view,
+        unit: "dual"
+      });
+
+      view.ui.add(scalebar, "bottom-right");
+
+      var compass = new Compass({
+      view: view
+      });
+      view.ui.add(compass, "top-left");
+      
+
+      view.on("layerview-create", function(event) {
+           if (event.layer.id === "shelter"){
+            console.log("shelterの LayerView が作成されました!", event.layerView);
+          }
+          if (event.layer.id === "flood"){
+           console.log("floodの LayerView が作成されました!", event.layerView);
+         }
+         if (event.layer.id === "did"){
+          console.log("didの LayerView が作成されました!", event.layerView);
+        }
+        });
+
+    const shelterToggle = document.getElementById("shelter");
+    const floodToggle = document.getElementById("flood");
+    const didToggle = document.getElementById("did");
+
+      on(shelterToggle, "change", function() {
+        shelter.visible = shelterToggle.checked;
+      });
+      on(floodToggle, "change", function() {
+        flood.visible = floodToggle.checked;
+      });
+      on(didToggle, "change", function() {
+        did.visible = didToggle.checked;
+      });
+    });
+    
+  </script>
+</head>
+<body>
+
+
+  <div id="viewDiv" ><button id="toggle" type="button" class="my_button">图例</button></div>
+  <div class="container">
+    <div class="layerToggle">
+      <div id="title"><br>图层</div>
+      <div class="content">
+        <p><input type="checkbox" id="shelter"/> 紧急避难场所<br>
+        <p><input type="checkbox" id="did" /> 人口集中地区<br></p>
+        <p><input type="checkbox" id="flood" checked /> 假定洪水淹没区域<br></p>
+        <div style="width:100px; height:90px;">
+        <img src="../../img/legend_te.png" id="img01"><br></div>
+      </div>
+      <p><a href="https://github.com/yamauchi-inochu/arcgis_api">关于本地图</a></p></div>
+   </div>
+  
+   
+ <script>
+  $(document).ready(function(){
+   $('#toggle').click(function(){
+    $('.layerToggle').animate({width:'toggle'},200);
+   });
+  });
+ </script>
+ 
+</body>
+</html>

@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Custom ElevationLayer - Thematic data as elevation - 4.7</title>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.6/esri/css/main.css">
+  <link rel="stylesheet" href="https://js.arcgis.com/4.6/dijit/themes/claro/claro.css">
+  <link rel="stylesheet" href="../../js/TOC/TOC.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+   crossorigin="anonymous"></script>
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+    crossorigin="anonymous">
+  <style>
+      html,
+      body,
+      #mapDiv{
+          padding:0;
+          margin:0;
+          height:100%;
+          width:100%;
+      }
+
+#content {
+    height:100vh;
+}
+
+#content > div{
+    height:inherit;
+}
+
+#sidebar{
+    z-index:99;
+    position:absolute;
+    top:0;
+    right:0;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+    width:30%;
+    overflow:scroll;
+}
+#text{
+    color:white;
+    padding:3%;
+}
+  </style>
+  <script src="https://js.arcgis.com/4.6/"></script>
+   
+</head>
+<body>
+    <main id="content" role="main" class="container-fluid claro">
+        <div class="row">
+            <div id="mapDiv"></div>
+            <div id="sidebar" class="col">
+                <div id="text">
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">レイヤーを選択</label>
+                    <select onchange="changeLayer(this.value)" class="form-control" id="exampleFormControlSelect1">
+                        <option value="TOKYOLayer">東京都周り</option>
+                        <option value="JPLayer">日本地図</option>
+                        <option value="double">重ね合わせ</option>
+                    </select>
+                </div>
+                <div id="tocDiv"></div>
+            </div>
+        </div>
+</div>        
+        </main>
+    <script src="../../js/TOC/TOC_4xx.js"></script>
+   <script src="../../js/TOC/app.js"></script>
+   
+</body>
+</html>

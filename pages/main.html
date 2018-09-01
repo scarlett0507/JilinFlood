@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>homepage</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+
+    <link rel="stylesheet" href="../layui/css/layui.css" media="all" />
+    <link rel="stylesheet" href="../layui/css/mind.css" />
+    <link rel="stylesheet" href="../layui/css/disaster_font.css" />
+    <style>
+
+    </style>
+</head>
+<body class="childrenBody">
+    <blockquote class="layui-elem-quote layui-bg-green">
+		<div id="nowTime"></div>
+	</blockquote>
+    <div class="layui-carousel" id="mind-flash">
+        <div carousel-item>
+            <div><img src="../images/inner/envir.jpg" width="100%" height="100%"></a><h3>自然環境</a></h3><p>この写真は中国四川省の九寨溝である。九寨溝（きゅうさいこう）は中国四川省北部のアバ・チベット族チャン族自治州九寨溝県にある自然保護区であり、ユネスコの世界遺産（自然遺産）に登録されている。</p></div>
+            <div><img src="../images/inner/indo.jpg" width="100%" height="100%"></a><h3>自然災害</a></h3><p>2017年インドネシア・バリ島の活火山アグン山で大規模な噴火が起きた。アグン山から上がった黒煙は頂上から最大3400メートルの上空まで到達した。</p></div>
+            <div><img src="../images/inner/mapp.png" width="100%" height="100%"></a><h3>地図</a></h3><p>この地図は、2012年にNASAによって作成されたナイトライトマップである。</p></div>
+            <div><img src="../images/inner/test.gif" width="100%" height="100%"></a><h3>GIS</a></h3><p>この地図は、137年間のニューヨーク市の開発の変遷を示した電子地図である。</p></div>
+        </div>
+        </div>
+    <div id="title">
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend><h3>本アプリについて</h3></legend>
+        </fieldset>
+    </div>
+    <div class="content">
+        <p>本アプリは、高校地理の学習を補助するための教材アプリです。教材で紹介されるデジタル地図は、紙の地図からコピーしたものではなく、地理情報システム（GIS）を用いて作成しています。地理空間情報社会の到来といわれる現在、GISを利用した地図の活用能力を育むことが求められています。</p>
+    </div>
+    <div id="title">
+        <fieldset class="layui-elem-field layui-field-title">
+            <legend><h3>主な内容</h3></legend>
+        </fieldset>
+    </div>
+    <div class="content">
+        <p>·衛生画像、地形断面図、鳥瞰図などを利用して、地形や環境情報を視覚的に理解させます。</p>
+    </div>
+    <div class="content">
+        <p>·過去の地震·洪水·火山噴火などの被災地域、居住空間、土地利用などの情報を重ね合わせて表示し、分析することで、将来の自然災害に対して、防災·減災の方法を具体的に考える力を育て、地域のレジリエンスを理解させます。</p>
+    </div>
+    <div class="content">
+       　<p>·事象の重ね合わせや空間分析を、ミクロからマクロまでの様々な空間スケールで提示し考察させることで、事象を分析的にみたり、俯瞰したりといった地理的見方·考え方を育成します。</p>
+    </div>
+    <div class="demo">
+         <iframe src="../page/3Dfont.html" frameborder="0" style="width:100%; height:300px;"></iframe>
+    </div>
+    <div id="title">
+         <fieldset class="layui-elem-field layui-field-title">
+              <legend><h3>本サイトに関すること</h3></legend>
+         </fieldset>
+    </div>
+    <div class="content">
+         <li><p>研究代表者：<a href="http://oguchaylab.csis.u-tokyo.ac.jp/">宋　佳麗　& 小口 高</a></p></li>
+    </div>
+    <script src="../layui/layui.all.js" charset="utf-8"></script>
+    <div id="LAY_democodejs">
+         <script>
+             layui.use(['carousel', 'form'], function () {
+                 var carousel = layui.carousel
+                     , form = layui.form;
+
+                 layui.use('carousel', function () {
+                     var carousel = layui.carousel;
+                     //建造实例
+                     carousel.render({
+                         elem: '#mind-flash'
+                         , width: '100%'
+                         , height: '280px'
+                         , interval: '1500'
+                     });
+                 });
+
+                 //监听开关
+                 form.on('switch(autoplay)', function () {
+                     ins3.reload({
+                         autoplay: this.checked
+                     });
+                 });
+
+                 $('.demoSet').on('keyup', function () {
+                     var value = this.value
+                         , options = {};
+                     if (!/^\d+$/.test(value)) return;
+
+                     options[this.name] = value;
+                     ins3.reload(options);
+                 });
+
+                 //其它示例
+                 $('.demoTest .layui-btn').on('click', function () {
+                     var othis = $(this), type = othis.data('type');
+                     active[type] ? active[type].call(this, othis) : '';
+                 });
+             });
+
+
+             layui.use('element', function () {
+                 var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+
+                 //监听导航点击
+                 element.on('nav(demo)', function (elem) {
+                     //console.log(elem)
+                     layer.msg(elem.text());
+                 });
+             });
+        </script>
+    </div>
+    <script type="text/javascript" src="../js/main.js"></script>
+</body>
+</html>
