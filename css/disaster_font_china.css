@@ -1,4 +1,4 @@
-﻿* {
+* {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -15,6 +15,7 @@ img{
     height:auto;
     max-width:100%;
     max-height:100%;
+    align:"middle";
 }
 v {
     width: 90%;
@@ -28,26 +29,26 @@ v {
 }
 div.layerToggle {
     bottom: 5%;
-    top: 55%;
+    top: auto;
     left:2%;
     position: absolute;
     z-index: 99;
     background-color: white;
     border-radius: 8px;
-    padding: 3%;
-    opacity: 0.75;
+    padding: auto;
+    opacity: 0.8;
 }
 div#title {
     width: 100%;
     color: #000000;
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1.0em;
 }
 .content {
     color: #000000;
     margin: 0 auto;
-    width: 100%;
-    float: right;
+    width: auto;
+    float: left;
 }
 p {
     width: 90%;
@@ -57,17 +58,17 @@ p {
     letter-spacing: 3px;
     line-height: 150%;
     margin: 0 auto;
-    font-size: 0.95em;
+    font-size: 0.8em;
 }
 div.container {
-   height: 70%;
+   height: 50%;
    float: right;
 }
 .my_button{  
   background-color: #009588;
   border: none;
   color: #FFFFFF;
-  padding: 8px 16px;
+  padding: 0.8% 1.6%;
   panding:auto;
   text-align: center;
   font-size: 0.8em;
@@ -76,12 +77,11 @@ div.container {
   display: inline-block;
   text-decoration: none;
   cursor: pointer;
-  
-   border-radius: 12px;
-   position: absolute;  
-   z-index: 100;  
-   left:2%;  
-   bottom:48%;  
+  border-radius: 12px;
+  position: absolute;  
+  z-index: 100;  
+  left:2%;  
+  bottom:51%;  
 
 }  
 .my_button:hover {opacity: 1}
