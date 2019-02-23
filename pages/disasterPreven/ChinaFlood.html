@@ -26,6 +26,7 @@
       "esri/Map",
       "esri/views/MapView",
       "esri/layers/WebTileLayer",
+      "esri/widgets/Expand",
       "esri/layers/FeatureLayer",
       "esri/geometry/support/webMercatorUtils",
       "esri/widgets/BasemapGallery",
@@ -39,6 +40,7 @@
       Map,
       MapView,
       WebTileLayer,
+      Expand,
       FeatureLayer,
       webMercatorUtils,
       BasemapGallery,
@@ -49,23 +51,23 @@
     ) {
      
         const shelter = new KMLLayer({
-        url:"https://scarlett0507.github.io/JilinKML/jilinshelter.kmz",
+        url:"https://scarlett0507.github.io/SongYuan/shelterp.kmz",
         id:"shelter",
-        copyright:"根据吉林市地震局网站公布信息制作而成",
+        copyright:"根据松原市网站公布信息制作而成",
         visible: false
       });
 
       const flood = new KMLLayer({
-      url:"https://scarlett0507.github.io/JilinKML/waterlogging.kmz",
+      url:"https://scarlett0507.github.io/SongYuan/water.kmz",
       id:"flood",
       copyright:"根据DEM数据制作而成",
       opacity:0.6
       });
 
       const did = new KMLLayer({
-      url:"https://scarlett0507.github.io/JilinKML/jilinpop.kmz",
+      url:"https://scarlett0507.github.io/SongYuan/Line.kmz",
       id:"did",
-      copyright:"根据2015年人口普查数据制作而成",
+      copyright:"",
       visible: false,
       opacity:0.6
       });
@@ -78,16 +80,19 @@
       const view = new MapView({
         container: "viewDiv",
         map: map,
-        center: [126.6205, 43.8955],
-        zoom: 11
+        center: [124.8205, 45.1019],
+        zoom: 12
       });
       
-      var basemapGallery = new BasemapGallery({
-    	  view:view
-    	  });
-      view.ui.add(basemapGallery,{
-    	  position:"top-right"
-      });
+      const basemapGallery = new Expand({
+          content: new BasemapGallery({
+            view: view,
+            style: "card" // other styles include 'classic'
+          }),
+          view: view,
+          expanded: true
+        });
+        view.ui.add(basemapGallery, "top-right");
 
 
       const scalebar = new ScaleBar({
@@ -141,15 +146,16 @@
       <div id="title"><br>图层</div>
       <div class="content">
         <p><input type="checkbox" id="shelter"/> 紧急避难场所<br>
-        <p><input type="checkbox" id="did" /> 人口集中地区<br></p>
-        <p><input type="checkbox" id="flood" checked /> 假定洪水淹没区域<br></p>
-        <div style="width:100px; height:90px;">
-        <img src="../../img/legend_te.png" id="img01"><br></div>
+        <img src="../../img/shelter.png"><br>
+        <p><input type="checkbox" id="did"/> 安全避难线<br>
+        <img src="../../img/line.png"><br>
+        <p><input type="checkbox" id="flood"  checked /> 假定洪水淹没区域<br>
+        <div style="width:100px; height:90px; margin:0 auto;">
+	    <img src="../../img/depth.png"><br></div>
+      <p style="text-align: center; font-size:10px;"><a href="https://github.com/yamauchi-inochu/arcgis_api">关于本地图</a></p>
       </div>
-      <p><a href="https://github.com/yamauchi-inochu/arcgis_api">关于本地图</a></p></div>
+      </div>
    </div>
-  
-   
  <script>
   $(document).ready(function(){
    $('#toggle').click(function(){
