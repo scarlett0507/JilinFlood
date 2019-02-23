@@ -34,7 +34,7 @@ layui.use(['form','layer','laydate','table','laytpl'],function(){
     //打开中国地图
     function openChina(edit){
         var index = layui.layer.open({
-            title : "中国的例子",
+            title : "松原市洪水危险地图",
             type : 2,
             content : "../disasterPreven/ChinaFlood.html",
             success : function(layero, index){
